@@ -13,6 +13,7 @@ namespace InventorySystem
         int weight = 0;
         int maxWeight = 100;
 
+
         
         public void Menu()
         {
@@ -96,7 +97,7 @@ namespace InventorySystem
                 //check input
                 if (choice == "1")
                 {
-                    Dagger();
+                    Dagger(10, 5);
                 }
                 else if (choice == "2")
                 {
@@ -114,14 +115,13 @@ namespace InventorySystem
            
             
         }
-        public void Dagger()
+        bool Dagger(int damage, int weight)
         {
             Console.WriteLine("You have equiped the Dagger!");
-            damage = 10;
             Console.WriteLine("Damage: " + damage + "PP");
-            weight = 5;
             Console.WriteLine("Weight: " + weight);
             Console.WriteLine("");
+            return true;
             //check weight
             if (weight > maxWeight)
             {
