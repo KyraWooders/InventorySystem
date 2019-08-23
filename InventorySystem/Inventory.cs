@@ -12,6 +12,7 @@ namespace InventorySystem
         float gold = 0.00f;
         int weight = 0;
         int maxWeight = 100;
+
         
         public void Menu()
         {
@@ -25,6 +26,8 @@ namespace InventorySystem
                 Console.WriteLine("2: Unepuip Weapon");
                 Console.WriteLine("3: Add Gold");
                 Console.WriteLine("4: Lost Gold");
+                Console.WriteLine("5: Epuip Armor");
+                Console.WriteLine("6: Unepuip Armor");
 
                 //get input
                 choice = Console.ReadLine();
@@ -51,9 +54,27 @@ namespace InventorySystem
                     float lostGold = Convert.ToSingle(Console.ReadLine());
                     LoseGold(lostGold);
                 }
+                else if (choice == "5")
+                {
+                    EquipArmor();
+                }
+                else if (choice == "6")
+                {
+                    UnequipArmor();
+                }
             }
         }
-
+        public void lightArmor()
+        {
+            Console.WriteLine("You have equiped Light Armor!");
+            weight = 5;
+            Console.WriteLine("Weight: " + weight);
+            Console.WriteLine("");
+            if (weight > maxWeight)
+            {
+                Console.WriteLine("You can't eqiup the armor.");
+            }
+        }
         public void EquipWeapon()
         {
             string choice = "";
@@ -101,6 +122,11 @@ namespace InventorySystem
             weight = 5;
             Console.WriteLine("Weight: " + weight);
             Console.WriteLine("");
+            //check weight
+            if (weight > maxWeight)
+            {
+                Console.WriteLine("You can't eqiup the weapon.");
+            }
         }
         public void Sword()
         {
@@ -110,6 +136,10 @@ namespace InventorySystem
             weight = 10;
             Console.WriteLine("Weight: " + weight);
             Console.WriteLine("");
+            if (weight > maxWeight)
+            {
+                Console.WriteLine("You can't eqiup the weapon.");
+            }
         }
         public void WarHammer()
         {
@@ -119,15 +149,24 @@ namespace InventorySystem
             weight = 25;
             Console.WriteLine("Weight: " + weight);
             Console.WriteLine("");
+            if (weight > maxWeight)
+            {
+                Console.WriteLine("You can't eqiup the weapon.");
+            }
         }
         public void MasterSword()
         {
             Console.WriteLine("You have equiped the Master Sword!");
             damage = 100;
             Console.WriteLine("Damage: " + damage + "PP");
-            weight = 100;
+            weight = 1200;
             Console.WriteLine("Weight: " + weight);
             Console.WriteLine("");
+            if (weight > maxWeight)
+            {
+                Console.WriteLine("You can't eqiup the weapon.");
+                Console.WriteLine("");
+            }
         }
         public void UnequipWeapon()
         {
@@ -135,6 +174,8 @@ namespace InventorySystem
             damage = 1;
             Console.WriteLine("Damage: " + damage);
             weight = 0;
+            Console.WriteLine("Weight: " + weight);
+            Console.WriteLine("");
         }
         public void AddGold(float amount)
         {
@@ -152,6 +193,43 @@ namespace InventorySystem
                 gold = 0;
             }
             Console.WriteLine("Gold: " + gold);
+        }
+        public void EquipArmor()
+        {
+            string choice = "";
+            while (choice != "0")
+            {
+                Console.WriteLine("What armor would you like?");
+                Console.WriteLine("0: Cancel");
+                Console.WriteLine("1: Light Armor");
+                Console.WriteLine("2: Medium Armor");
+                Console.WriteLine("3: Heavy Armor");
+
+                //get input
+                choice = Console.ReadLine();
+                Console.WriteLine("");
+
+                //check input
+                if (choice == "1")
+                {
+
+                }
+                else if (choice == "2")
+                {
+
+                }
+                else if (choice == "3")
+                {
+
+                }
+            }
+        }
+        public void UnequipArmor()
+        {
+            Console.WriteLine("UnEquipped the Armor.");
+            weight = 0;
+            Console.WriteLine("Weight: " + weight);
+            Console.WriteLine("");
         }
     }
 }
