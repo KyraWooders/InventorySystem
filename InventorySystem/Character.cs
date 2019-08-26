@@ -13,7 +13,12 @@ namespace InventorySystem
         private int _level = 1;
         private int[] _requiredXP = { 100, 300, 600, 1000 };
 
+        private Inventory inventory = new Inventory();
 
+        protected int _health = 100;
+        protected int _mana = 100;
+        protected int _strength = 5;
+        protected int _speed = 5;
 
         public Character(string name)
         {
@@ -30,6 +35,17 @@ namespace InventorySystem
             Console.WriteLine(_name);
             Console.WriteLine("Level: " + _level);
             Console.WriteLine("Experience: " + _xp);
+            Console.WriteLine("Health: " + _health);
+            Console.WriteLine("Mana: " + _mana);
+            Console.WriteLine("Strength: " + _strength);
+            Console.WriteLine("Speed: " + _speed);
+            Console.WriteLine("");
+
+        }
+        public void OpenInventory()
+        {
+            Inventory inventory = new Inventory();
+            inventory.Menu();
         }
 
         public int Experience
@@ -41,7 +57,9 @@ namespace InventorySystem
             set
             {
                 _xp = value;
+                
                 Console.WriteLine(_name + " gained XP and now has " + _xp + "xp.");
+
                 //stay in bound
                 if (_level <= _requiredXP.Length)
                 {
@@ -51,6 +69,7 @@ namespace InventorySystem
                         _level++;
                         Console.WriteLine(_name + "'s has leveled up!");
                         Console.WriteLine("Level: " + _level);
+                        Console.WriteLine("");
 
                     }
                 }

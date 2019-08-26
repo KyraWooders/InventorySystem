@@ -12,30 +12,59 @@ namespace InventorySystem
         {
             //Inventory inventory = new Inventory();
             // inventory.Menu();
+            string name = "";
+            string choice = "";
+            Console.WriteLine("Enter name of party member 1:");
+            name = Console.ReadLine();
+            while (choice != "1" && choice != "2")
+            {
+               
+                //display menu
+                Console.WriteLine("/nChoose a job:");
+                Console.WriteLine("1: Knight");
+                Console.WriteLine("2: Rouge");
+                choice = Console.ReadLine();
+            }
+            Character player;
+            if (choice == "1")
+            {
+                player = new Knight(name);
+            }
+            else if (choice == "2")
+            {
+                player = new Rouge(name);
+            }
+            else
+            {
+                player = new Character(name);
+            }
+            player.Print();
+            player.OpenInventory();
 
-            Character hero = new Character("OwO");
-            hero.Print();
-            Character UwU = new Character("UwU");
-            UwU.Print();
-            Character TwT = new Character("TwT");
-            TwT.Print();
+            Character OmO = new Knight("OmO");
 
-            hero.Experience = 100;
-            hero.Experience++;
-            hero.Experience = hero.Experience + 100;
-            hero.Experience++;
-            hero.Experience = hero.Experience + 200;
-            hero.Experience++;
-            hero.Experience = hero.Experience + 300;
-            hero.Experience++;
-            hero.Experience = hero.Experience + 400;
-            hero.Experience++;
-            hero.Experience = hero.Experience + 500;
-            hero.Experience++;
-            hero.Experience = hero.Experience + 600;
-            hero.Experience++;
-            hero.Experience = hero.Experience + 700;
-            hero.Experience++;
+            while (choice != "1" && choice != "2")
+            {
+
+                //display menu
+                Console.WriteLine("/nChoose a job:");
+                Console.WriteLine("1: " + OmO.Name());
+                Console.WriteLine("2: Rouge");
+                choice = Console.ReadLine();
+            }
+            Character ;
+            if (choice == "1")
+            {
+                player = new Knight(name);
+            }
+            else if (choice == "2")
+            {
+                player = new Rouge(name);
+            }
+            else
+            {
+                player = new Character(name);
+            }
 
             int[] testArray = new int[4];
 
@@ -48,7 +77,7 @@ namespace InventorySystem
 
             string[] stringArray = new string[3];
 
-            Character[] party = { hero, UwU, TwT, new Character("OmO") };
+            Character[] party = { player, new Character("OmO") };
             
 
             Console.ReadKey();
