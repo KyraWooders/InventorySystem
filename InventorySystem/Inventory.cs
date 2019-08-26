@@ -101,72 +101,19 @@ namespace InventorySystem
                 }
                 else if (choice == "2")
                 {
-                    Sword();
+                    Sword(20, 10);
                 }
                 else if (choice == "3")
                 {
-                    WarHammer();
+                    WarHammer(50, 25);
                 }
                 else if (choice == "4")
                 {
-                    MasterSword();
+                    MasterSword(100, 1200);
                 }
             }
            
             
-        }
-        bool Dagger(int damage, int weight)
-        {
-            Console.WriteLine("You have equiped the Dagger!");
-            Console.WriteLine("Damage: " + damage + "PP");
-            Console.WriteLine("Weight: " + weight);
-            Console.WriteLine("");
-            return true;
-            //check weight
-            if (weight > maxWeight)
-            {
-                Console.WriteLine("You can't eqiup the weapon.");
-            }
-        }
-        public void Sword()
-        {
-            Console.WriteLine("You have equiped the Sword!");
-            damage = 20;
-            Console.WriteLine("Damage: " + damage + "PP");
-            weight = 10;
-            Console.WriteLine("Weight: " + weight);
-            Console.WriteLine("");
-            if (weight > maxWeight)
-            {
-                Console.WriteLine("You can't eqiup the weapon.");
-            }
-        }
-        public void WarHammer()
-        {
-            Console.WriteLine("You have equiped the Warhammer!");
-            damage = 50;
-            Console.WriteLine("Damage: " + damage + "PP");
-            weight = 25;
-            Console.WriteLine("Weight: " + weight);
-            Console.WriteLine("");
-            if (weight > maxWeight)
-            {
-                Console.WriteLine("You can't eqiup the weapon.");
-            }
-        }
-        public void MasterSword()
-        {
-            Console.WriteLine("You have equiped the Master Sword!");
-            damage = 100;
-            Console.WriteLine("Damage: " + damage + "PP");
-            weight = 1200;
-            Console.WriteLine("Weight: " + weight);
-            Console.WriteLine("");
-            if (weight > maxWeight)
-            {
-                Console.WriteLine("You can't eqiup the weapon.");
-                Console.WriteLine("");
-            }
         }
         public void UnequipWeapon()
         {
@@ -231,5 +178,66 @@ namespace InventorySystem
             Console.WriteLine("Weight: " + weight);
             Console.WriteLine("");
         }
+        bool Dagger(int damage, int weight)
+        {
+            //check weight
+            if (weight > maxWeight)
+            {
+                Console.WriteLine("You can't eqiup the weapon.");
+                Console.WriteLine("");
+                return false;
+            }
+            Console.WriteLine("You have equiped the Dagger!");
+            Console.WriteLine("Damage: " + damage + "PP");
+            Console.WriteLine("Weight: " + weight);
+            Console.WriteLine("");
+            return true;
+        }
+        bool Sword(int damage, int weight)
+        {
+            //check weight
+            if (weight > maxWeight)
+            {
+                Console.WriteLine("You can't eqiup the weapon.");
+                Console.WriteLine("");
+                return false;
+            }
+            Console.WriteLine("You have equiped the Sword!");
+            Console.WriteLine("Damage: " + damage + "PP");
+            Console.WriteLine("Weight: " + weight);
+            Console.WriteLine("");
+            return true;
+        }
+        bool WarHammer(int damage, int weight)
+        {
+            //check weight
+            if (weight > maxWeight)
+            {
+                Console.WriteLine("You can't eqiup the weapon.");
+                Console.WriteLine("");
+                return false;
+            }
+            Console.WriteLine("You have equiped the Warhammer!");
+            Console.WriteLine("Damage: " + damage + "PP");
+            Console.WriteLine("Weight: " + weight);
+            Console.WriteLine("");
+            return true;
+        }
+        bool MasterSword(int damage, int weight)
+        {
+            //check weight
+            if (weight > maxWeight)
+            {
+                Console.WriteLine("You can't eqiup the weapon.");
+                Console.WriteLine("");
+                return false;
+            }
+            Console.WriteLine("You have equiped the Master Sword!");
+            Console.WriteLine("Damage: " + damage + "PP");
+            Console.WriteLine("Weight: " + weight);
+            Console.WriteLine("");
+            return true;
+        }
+       
     }
 }
