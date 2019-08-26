@@ -8,12 +8,34 @@ namespace InventorySystem
 {
     class Inventory
     {
-        int damage = 1;
-        float gold = 0.00f;
-        int weight = 0;
-        int maxWeight = 100;
-        int armorWeight = 0;
-
+        private int _itemDamage = 10;
+        private int _itemDefense = 0;
+        private int Damage = 1;
+        private float _gold = 0.00f;
+        private int _weight = 0;
+        private int _maxWeight = 100;
+        private int _armorWeight = 0;
+        //do 
+        private AttackItem sword = new AttackItem("MasterSword", 100, 1200);
+        private AttackItem dagger = new AttackItem("Dagger", 10, 5);
+        private AttackItem sword2 = new AttackItem("Sword", 20, 10);
+        private AttackItem warhammer = new AttackItem("warhammer", 50, 25);
+        private AttackItem[] weapons = new AttackItem[4];
+        public Inventory()
+        {
+            AttackItem[] weaponBag = {sword, dagger, sword2, warhammer};
+            weapons = weaponBag;
+        }
+        //returns the damage our weapon deals 
+        public int GetItemDamage()
+        {
+            return _itemDamage;
+        }
+        //Returns the defense our armor grants
+        public int GetItemDefense()
+        {
+            return _itemDefense;
+        }
         
         public void Menu()
         {
@@ -65,17 +87,6 @@ namespace InventorySystem
                 }
             }
         }
-        public void lightArmor()
-        {
-            Console.WriteLine("You have equiped Light Armor!");
-            weight = 5;
-            Console.WriteLine("Weight: " + weight);
-            Console.WriteLine("");
-            if (weight > maxWeight)
-            {
-                Console.WriteLine("You can't eqiup the armor.");
-            }
-        }
         public void EquipWeapon()
         {
             string choice = "";
@@ -97,19 +108,19 @@ namespace InventorySystem
                 //check input
                 if (choice == "1")
                 {
-                    Dagger(10, 5);
+                    _itemDamage = weapons[1].Damage;
                 }
                 else if (choice == "2")
                 {
-                    Sword(20, 10);
+                    _itemDamage = weapons[2].Damage;
                 }
                 else if (choice == "3")
                 {
-                    WarHammer(50, 25);
+                    _itemDamage = weapons[3].Damage;
                 }
                 else if (choice == "4")
                 {
-                    MasterSword(100, 1200);
+                    _itemDamage = weapons[0].Damage;
                 }
             }
            
@@ -118,28 +129,28 @@ namespace InventorySystem
         public void UnequipWeapon()
         {
             Console.WriteLine("UnEquipped a weapon.");
-            damage = 1;
-            Console.WriteLine("Damage: " + damage);
-            weight = 0;
-            Console.WriteLine("Weight: " + weight);
+            Damage = 1;
+            Console.WriteLine("Damage: " + Damage);
+            _weight = 0;
+            Console.WriteLine("Weight: " + _weight);
             Console.WriteLine("");
         }
         public void AddGold(float amount)
         {
             Console.WriteLine("Got " + amount + " gold!");
-            gold += amount;
-            Console.WriteLine("Gold: " + gold);
+            _gold += amount;
+            Console.WriteLine("Gold: " + _gold);
         }
         public void LoseGold(float amount)
         {
             Console.WriteLine("Lost " + amount + " gold.");
-            gold -= amount;
+            _gold -= amount;
             //if they lose more monz than they have
-            if (gold <= 0)
+            if (_gold <= 0)
             {
-                gold = 0;
+                _gold = 0;
             }
-            Console.WriteLine("Gold: " + gold);
+            Console.WriteLine("Gold: " + _gold);
         }
         public void EquipArmor()
         {
@@ -174,14 +185,14 @@ namespace InventorySystem
         public void UnequipArmor()
         {
             Console.WriteLine("UnEquipped the Armor.");
-            weight = 0;
-            Console.WriteLine("Weight: " + weight);
+            _weight = 0;
+            Console.WriteLine("Weight: " + _weight);
             Console.WriteLine("");
         }
         bool Dagger(int damage, int weight)
         {
             //check weight
-            if (weight > maxWeight)
+            if (weight > _maxWeight)
             {
                 Console.WriteLine("You can't eqiup the weapon.");
                 Console.WriteLine("");
@@ -196,7 +207,7 @@ namespace InventorySystem
         bool Sword(int damage, int weight)
         {
             //check weight
-            if (weight > maxWeight)
+            if (weight > _maxWeight)
             {
                 Console.WriteLine("You can't eqiup the weapon.");
                 Console.WriteLine("");
@@ -211,7 +222,7 @@ namespace InventorySystem
         bool WarHammer(int damage, int weight)
         {
             //check weight
-            if (weight > maxWeight)
+            if (weight > _maxWeight)
             {
                 Console.WriteLine("You can't eqiup the weapon.");
                 Console.WriteLine("");
@@ -226,7 +237,7 @@ namespace InventorySystem
         bool MasterSword(int damage, int weight)
         {
             //check weight
-            if (weight > maxWeight)
+            if (weight > _maxWeight)
             {
                 Console.WriteLine("You can't eqiup the weapon.");
                 Console.WriteLine("");
@@ -238,6 +249,17 @@ namespace InventorySystem
             Console.WriteLine("");
             return true;
         }
-       
+        public void lightArmor()
+        {
+            Console.WriteLine("You have equiped Light Armor!");
+            _weight = 5;
+            Console.WriteLine("Weight: " + _weight);
+            Console.WriteLine("");
+            if (_weight > _maxWeight)
+            {
+                Console.WriteLine("You can't eqiup the armor.");
+            }
+        }
+        
     }
 }

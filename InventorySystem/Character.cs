@@ -8,6 +8,7 @@ namespace InventorySystem
 {
     class Character
     {
+        
         private string _name = "";
         private int _xp = 0;
         private int _level = 1;
@@ -39,6 +40,7 @@ namespace InventorySystem
             Console.WriteLine("Mana: " + _mana);
             Console.WriteLine("Strength: " + _strength);
             Console.WriteLine("Speed: " + _speed);
+            Console.WriteLine("Combat Damagr: " + (_strength + inventory.GetItemDamage()));
             Console.WriteLine("");
 
         }

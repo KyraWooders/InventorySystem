@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace InventorySystem
+{
+    class DefenseItem : Item
+    {
+        private int _defense;
+        public int Defense
+        {
+            get
+            {
+                return _defense;
+            }
+        }
+        private DefenseItem(string newName, int newDefense, int newWeight)
+        {
+            Name = newName;
+            _defense = newDefense;
+            weight = newWeight;
+        }
+    }
+}
