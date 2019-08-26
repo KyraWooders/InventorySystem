@@ -12,7 +12,7 @@ namespace InventorySystem
         float gold = 0.00f;
         int weight = 0;
         int maxWeight = 100;
-
+        int armorWeight = 0;
 
         
         public void Menu()
