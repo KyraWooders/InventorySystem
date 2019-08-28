@@ -11,16 +11,18 @@ namespace InventorySystem
         static void Main(string[] args)
         {
             //create a bunch of monsters
-            Monster Orge = new Monster("Sherk", 1000, 205);
-            Monster Donkey = new Monster("Donkey!!!", 10000, 2);
-            Monster Porge = new Monster("Feonna", 10000, 2);
-            Monster PC = new Monster("Prince Charming", 1000, 205);
+            Monster Orge = new Monster("Sherk", 100, 20);
+            Monster Donkey = new Monster("Donkey!!!", 10, 20);
+            Monster Porge = new Monster("Fiona", 100, 30);
+            Monster PC = new Monster("Prince Charming", 10, 2);
             //create two arrays and place the monsters into them
             Monster[] goodTeam = { Orge, Porge };
             Monster[] badTeam = { Donkey, PC };
             //create an encounter from the two arrays of monsters
             Encounter encounter = new Encounter(goodTeam, badTeam);
-
+            encounter.Print();
+            encounter.Start();
+            
 
 
             Console.ReadKey();
