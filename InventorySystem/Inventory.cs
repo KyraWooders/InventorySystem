@@ -10,6 +10,7 @@ namespace InventorySystem
     {
         private int _itemDamage = 10;
         private int _itemDefense = 0;
+        private int _itemWeight = 0;
         private int Damage = 1;
         private float _gold = 0.00f;
         private int _weight = 0;
@@ -25,6 +26,10 @@ namespace InventorySystem
         {
             AttackItem[] weaponBag = {sword, dagger, sword2, warhammer};
             weapons = weaponBag;
+        }
+        public int ItemWeight()
+        {
+            return _itemWeight;
         }
         //returns the damage our weapon deals 
         public int GetItemDamage()
@@ -109,18 +114,67 @@ namespace InventorySystem
                 if (choice == "1")
                 {
                     _itemDamage = weapons[1].Damage;
+                    _itemWeight = weapons[1].weight;
+                    //check weight
+                    if (_itemWeight > _maxWeight)
+                    {
+                        Console.WriteLine("You can't eqiup the weapon.");
+                        Console.WriteLine("");
+                    }
+                    Console.WriteLine("You have equiped the Dagger!");
+                    Console.WriteLine("Damage: " + _itemDamage + "PP");
+                    Console.WriteLine("Weight: " + _itemWeight);
+                    Console.WriteLine("");
+                    
                 }
                 else if (choice == "2")
                 {
                     _itemDamage = weapons[2].Damage;
+                    _itemWeight = weapons[2].weight;
+                    //check weight
+                    if (_itemWeight > _maxWeight)
+                    {
+                        Console.WriteLine("You can't eqiup the weapon.");
+                        Console.WriteLine("");
+                        
+                    }
+                    Console.WriteLine("You have equiped the Sword!");
+                    Console.WriteLine("Damage: " + _itemDamage + "PP");
+                    Console.WriteLine("Weight: " + _itemWeight);
+                    Console.WriteLine("");
+                    
                 }
                 else if (choice == "3")
                 {
                     _itemDamage = weapons[3].Damage;
+                    _itemWeight = weapons[3].weight;
+                    //check weight
+                    if (_itemWeight > _maxWeight)
+                    {
+                        Console.WriteLine("You can't eqiup the weapon.");
+                        Console.WriteLine("");
+                        
+                    }
+                    Console.WriteLine("You have equiped the Warhammer!");
+                    Console.WriteLine("Damage: " + _itemDamage + "PP");
+                    Console.WriteLine("Weight: " + _itemWeight);
+                    Console.WriteLine("");
+                    
                 }
                 else if (choice == "4")
                 {
                     _itemDamage = weapons[0].Damage;
+                    _itemWeight = weapons[0].weight;
+                    //check weight
+                    if (_itemWeight > _maxWeight)
+                    {
+                        Console.WriteLine("You can't eqiup the weapon.");
+                        Console.WriteLine("");
+                    }
+                    Console.WriteLine("You have equiped the Master Sword!");
+                    Console.WriteLine("Damage: " + _itemDamage + "PP");
+                    Console.WriteLine("Weight: " + _itemWeight);
+                    Console.WriteLine("");
                 }
             }
            
@@ -188,66 +242,6 @@ namespace InventorySystem
             _weight = 0;
             Console.WriteLine("Weight: " + _weight);
             Console.WriteLine("");
-        }
-        bool Dagger(int damage, int weight)
-        {
-            //check weight
-            if (weight > _maxWeight)
-            {
-                Console.WriteLine("You can't eqiup the weapon.");
-                Console.WriteLine("");
-                return false;
-            }
-            Console.WriteLine("You have equiped the Dagger!");
-            Console.WriteLine("Damage: " + damage + "PP");
-            Console.WriteLine("Weight: " + weight);
-            Console.WriteLine("");
-            return true;
-        }
-        bool Sword(int damage, int weight)
-        {
-            //check weight
-            if (weight > _maxWeight)
-            {
-                Console.WriteLine("You can't eqiup the weapon.");
-                Console.WriteLine("");
-                return false;
-            }
-            Console.WriteLine("You have equiped the Sword!");
-            Console.WriteLine("Damage: " + damage + "PP");
-            Console.WriteLine("Weight: " + weight);
-            Console.WriteLine("");
-            return true;
-        }
-        bool WarHammer(int damage, int weight)
-        {
-            //check weight
-            if (weight > _maxWeight)
-            {
-                Console.WriteLine("You can't eqiup the weapon.");
-                Console.WriteLine("");
-                return false;
-            }
-            Console.WriteLine("You have equiped the Warhammer!");
-            Console.WriteLine("Damage: " + damage + "PP");
-            Console.WriteLine("Weight: " + weight);
-            Console.WriteLine("");
-            return true;
-        }
-        bool MasterSword(int damage, int weight)
-        {
-            //check weight
-            if (weight > _maxWeight)
-            {
-                Console.WriteLine("You can't eqiup the weapon.");
-                Console.WriteLine("");
-                return false;
-            }
-            Console.WriteLine("You have equiped the Master Sword!");
-            Console.WriteLine("Damage: " + damage + "PP");
-            Console.WriteLine("Weight: " + weight);
-            Console.WriteLine("");
-            return true;
         }
         public void lightArmor()
         {
