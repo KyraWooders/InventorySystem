@@ -6,17 +6,20 @@ using System.Threading.Tasks;
 
 namespace InventorySystem
 {
-    class Character
+    class Character : Creature
     {
-        
+
         private string _name = "";
         private int _xp = 0;
         private int _level = 1;
         private int[] _requiredXP = { 100, 300, 600, 1000 };
+        private int _damage = 10;
+        
+
 
         private Inventory inventory = new Inventory();
 
-        protected int _health = 100;
+        
         protected int _mana = 100;
         protected int _strength = 5;
         protected int _speed = 5;
@@ -24,14 +27,21 @@ namespace InventorySystem
         public Character(string name)
         {
             _name = name;
+            _health = 100;
+            _maxHealth = 100;
         }
 
-        public string Name()
+        public override string GetName()
         {
             return _name;
         }
 
-        public void Print()
+        public override int GetDamage()
+        {
+            return _damage;
+        }
+        
+        public override void Print()
         {
             Console.WriteLine(_name);
             Console.WriteLine("Level: " + _level);
@@ -40,7 +50,7 @@ namespace InventorySystem
             Console.WriteLine("Mana: " + _mana);
             Console.WriteLine("Strength: " + _strength);
             Console.WriteLine("Speed: " + _speed);
-            Console.WriteLine("Combat Damagr: " + (_strength + inventory.GetItemDamage()));
+            Console.WriteLine("Combat Damagr: " + (_strength + inventory.GetItemDamage() + GetDamage()));
             Console.WriteLine("");
 
         }
@@ -59,7 +69,7 @@ namespace InventorySystem
             set
             {
                 _xp = value;
-                
+
                 Console.WriteLine(_name + " gained XP and now has " + _xp + "xp.");
 
                 //stay in bound
@@ -76,6 +86,56 @@ namespace InventorySystem
                     }
                 }
             }
+        }
+        public override void Fight(Creature target)
+        {
+            if (Health <= 0)
+            {
+                return;
+            }
+            //get the damage of this
+            int damage = GetDamage();
+            //subtract the damage from target health
+            target.Health -= damage;
+            //output 
+            Console.WriteLine(GetName() + " attacks! " + target.GetName() + " takes " + damage + "!");
+        }
+        public override void Fight(Creature[] targets)
+        {
+            if (Health <= 0)
+            {
+                return;
+            }
+
+            bool vaildInput = false;
+            while (!vaildInput)
+            {
+                Console.WriteLine("\nWho Will " + GetName() + " fight?");
+                //Iterate throught
+                for (int i = 0; i < targets.Length; i++)
+                {
+                    //print the current number (i) and current target
+                    string targetName = targets[i].GetName();
+                    Console.WriteLine(i + ":" + targetName);
+                }
+                //readline to get user input
+                string input = Console.ReadLine();
+                //convert the input to an integer
+                int choice = Convert.ToInt32(input);
+                //check that the choice is valid (above 0 and below the array lenght)
+                if (choice >= 0 && choice < targets.Length)
+                {
+                    ////set validInput to true
+                    vaildInput = true;
+                    //fight the chosen target
+                    Fight(targets[choice]);
+
+
+                }
+
+
+            }
+
         }
     }
 }

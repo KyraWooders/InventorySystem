@@ -10,14 +10,16 @@ namespace InventorySystem
     {
         static void Main(string[] args)
         {
+            
             //create a bunch of monsters
-            Monster Orge = new Monster("Sherk", 100, 20);
-            Monster Donkey = new Monster("Donkey!!!", 10, 20);
-            Monster Porge = new Monster("Fiona", 100, 30);
-            Monster PC = new Monster("Prince Charming", 10, 2);
+            Creature Orge = new Monster("Sherk", 100, 20);
+            Creature Donkey = new Monster("Donkey!!!", 10, 20);
+            Creature Porge = new Monster("Fiona", 100, 30);
+            Creature PC = new Monster("Prince Charming", 10, 2);
+            Character player = new Character("OwO");
             //create two arrays and place the monsters into them
-            Monster[] goodTeam = { Orge, Porge };
-            Monster[] badTeam = { Donkey, PC };
+            Creature[] goodTeam = { player, Orge, Porge };
+            Creature[] badTeam = { Donkey, PC };
             //create an encounter from the two arrays of monsters
             Encounter encounter = new Encounter(goodTeam, badTeam);
             encounter.Print();
@@ -42,7 +44,7 @@ namespace InventorySystem
                 Console.WriteLine("2: Rouge");
                 choice = Console.ReadLine();
             }
-            Character player;
+            Character play;
             if (choice == "1")
             {
                 player = new Knight(name);
@@ -69,44 +71,27 @@ namespace InventorySystem
                 //display menu
                 Console.WriteLine("/nWhoose inventorey?");
                 Console.WriteLine("0: Exit");
-                Console.WriteLine("1: " + player.Name());
-                Console.WriteLine("2: " + TwT.Name());
-                Console.WriteLine("3: " + UwU.Name());
+                Console.WriteLine("1: " + player.GetName());
+                Console.WriteLine("2: " + TwT.GetName());
+                Console.WriteLine("3: " + UwU.GetName());
 
                 choice = Console.ReadLine();
 
                 if (choice == "1")
                 {
-                    Console.WriteLine(player.Name());
+                    Console.WriteLine(player.GetName());
                     player.Print();
                 }
                 else if (choice == "2")
                 {
-                    Console.WriteLine(TwT.Name());
+                    Console.WriteLine(TwT.GetName());
                     TwT.Print();
                 }
                 else if (choice == "3")
                 {
-                    Console.WriteLine(UwU.Name());
+                    Console.WriteLine(UwU.GetName());
                     UwU.Print();
                 }
-
-                player.Experience = 100;
-                player.Experience++;
-                player.Experience = player.Experience + 100;
-                player.Experience++;
-                player.Experience = player.Experience + 200;
-                player.Experience++;
-                player.Experience = player.Experience + 300;
-                player.Experience++;
-                player.Experience = player.Experience + 400;
-                player.Experience++;
-                player.Experience = player.Experience + 500;
-                player.Experience++;
-                player.Experience = player.Experience + 600;
-                player.Experience++;
-                player.Experience = player.Experience + 700;
-                player.Experience++;
 
                 int[] testArray = new int[4];
 
