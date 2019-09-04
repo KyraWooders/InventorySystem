@@ -27,8 +27,7 @@ namespace InventorySystem
         public Character(string name)
         {
             _name = name;
-            _health = 100;
-            _maxHealth = 100;
+            
         }
 
         public override string GetName()
@@ -50,7 +49,7 @@ namespace InventorySystem
             Console.WriteLine("Mana: " + _mana);
             Console.WriteLine("Strength: " + _strength);
             Console.WriteLine("Speed: " + _speed);
-            Console.WriteLine("Combat Damagr: " + (_strength + inventory.GetItemDamage() + GetDamage()));
+            Console.WriteLine("Combat Damage: " + (_strength + inventory.GetItemDamage() + GetDamage()));
             Console.WriteLine("");
 
         }
@@ -94,11 +93,13 @@ namespace InventorySystem
                 return;
             }
             //get the damage of this
-            int damage = GetDamage();
+            int damage = GetDamage() + _strength + inventory.GetItemDamage();
             //subtract the damage from target health
             target.Health -= damage;
             //output 
+            Console.WriteLine("");
             Console.WriteLine(GetName() + " attacks! " + target.GetName() + " takes " + damage + "!");
+            Console.WriteLine("");
         }
         public override void Fight(Creature[] targets)
         {
@@ -129,8 +130,6 @@ namespace InventorySystem
                     vaildInput = true;
                     //fight the chosen target
                     Fight(targets[choice]);
-
-
                 }
 
 

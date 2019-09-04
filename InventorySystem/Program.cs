@@ -8,6 +8,8 @@ namespace InventorySystem
 {
     class Program
     {
+        public static Random random = new Random(); 
+
         static void Main(string[] args)
         {
 
@@ -31,39 +33,24 @@ namespace InventorySystem
             
             //create a bunch of monsters
             Creature Orge = new Monster("Sherk", 100, 20);
-            Creature Donkey = new Monster("Donkey!!!", 10, 20);
+            Creature Donkey = new Monster("Donkey!!!", 100, 20);
             Creature Porge = new Monster("Fiona", 100, 30);
-            Creature PC = new Monster("Prince Charming", 10, 2);
+            Creature PC = new Monster("Prince Charming", 100, 2);
             Character player = new Character("OwO");
             //create two arrays and place the monsters into them
             Creature[] goodTeam = { player, Orge, Porge };
             Creature[] badTeam = { Donkey, PC };
-            //create an encounter from the two arrays of monsters
-            Encounter encounter = new Encounter(goodTeam, badTeam);
-            encounter.Print();
-
-            Inventory inventory = new Inventory();
-
-            inventory.Menu();
-            encounter.Start();
-            Console.ReadKey();
-
-
-
-            return;
-            
             
             string name = "";
             string choice = "";
-            Console.WriteLine("Enter name of party member 1:");
-            name = Console.ReadLine();
             while (choice != "1" && choice != "2")
             {
 
                 //display menu
-                Console.WriteLine("/nChoose a job:");
+                Console.WriteLine("\nChoose a job:");
                 Console.WriteLine("1: Knight");
                 Console.WriteLine("2: Rouge");
+                Console.WriteLine("3: Mage");
                 choice = Console.ReadLine();
             }
             Character play;
@@ -75,10 +62,53 @@ namespace InventorySystem
             {
                 player = new Rouge(name);
             }
+            else if (choice == "3")
+            {
+                player = new Mage(name);
+            }
             else
             {
                 player = new Character(name);
             }
+            //create an encounter from the two arrays of monsters
+            Encounter encounter = new Encounter(goodTeam, badTeam);
+            encounter.Print();
+            player.OpenInventory();
+            
+            encounter.Start();
+            Console.ReadKey();
+
+
+
+            return;
+            
+            
+            //string name = "";
+            //string choice = "";
+            //Console.WriteLine("Enter name of party member 1:");
+            //name = Console.ReadLine();
+            //while (choice != "1" && choice != "2")
+            //{
+
+            //    //display menu
+            //    Console.WriteLine("/nChoose a job:");
+            //    Console.WriteLine("1: Knight");
+            //    Console.WriteLine("2: Rouge");
+            //    choice = Console.ReadLine();
+            //}
+            //Character play;
+            //if (choice == "1")
+            //{
+            //    player = new Knight(name);
+            //}
+            //else if (choice == "2")
+            //{
+            //    player = new Rouge(name);
+            //}
+            //else
+            //{
+            //    player = new Character(name);
+            //}
             player.Print();
             player.OpenInventory();
             Character UwU = new Rouge("UwU");

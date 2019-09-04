@@ -11,6 +11,7 @@ namespace InventorySystem
         public Rouge(string name) : base(name)
         {
             _health = 100;
+            _maxHealth = 100;
             _mana = 10;
             _strength = 20;
             _speed = 50;

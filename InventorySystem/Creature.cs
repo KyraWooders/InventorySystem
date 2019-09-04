@@ -50,5 +50,9 @@ namespace InventorySystem
         {
 
         }
+        public virtual int GetXP()
+        {
+            return 0;
+        }
     }
 }

@@ -46,6 +46,7 @@ namespace InventorySystem
             target.Health -= damage;
             //output 
             Console.WriteLine(GetName() + " attacks! " + target.GetName() + " takes " + damage + "!");
+            Console.WriteLine("");
         }
         public override void Fight(Creature[] targets)
         {
@@ -54,7 +55,7 @@ namespace InventorySystem
                 return;
             }
             Random random = new Random();
-            int choice = random.Next(0, targets.Length - 1);
+            int choice = Program.random.Next(0, targets.Length);
             Fight(targets[choice]);
 
 

@@ -42,7 +42,7 @@ namespace InventorySystem
         {
             return _name;
         }
-        //reture the description
+        //return the description
         public string GetDescription()
         {
             return _description;

@@ -32,6 +32,16 @@ namespace InventorySystem
             }
 
         }
+
+        private int GetTotalXP(Creature[] team)
+        {
+            int total = 0;
+            for (int i = 0; i< team.Length; i++)
+            {
+                total += team[i].GetXP();
+            }
+            return total;
+        }
         //monster fight
         public void BeginRound()
         {
@@ -93,6 +103,32 @@ namespace InventorySystem
                 else
                 {
                     stillFighting = false;
+                    if (goodIsAlive)
+                    {
+                        //give Xp to each character in good team 
+                        foreach (Creature cr in _goodMonsters)
+                        {
+                            if (cr is Character)
+                            {
+                                Character ch = (Character)cr;
+                               ch.Experience += GetTotalXP(_badMonsters);
+                            }
+                            
+                        }
+                    }
+                    else if (badIsAlive)
+                    {
+                        //give Xp to each character in bad team 
+                        foreach (Creature cr in _badMonsters)
+                        {
+                            if (cr is Character)
+                            {
+                                Character ch = (Character)cr;
+                                ch.Experience += GetTotalXP(_goodMonsters);
+                            }
+
+                        }
+                    }
                 }
                 Print();
             }

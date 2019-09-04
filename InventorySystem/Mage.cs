@@ -11,6 +11,7 @@ namespace InventorySystem
         public Mage(string name) : base(name)
         {
             _health = 100;
+            _maxHealth = 100;
             _mana = 200;
             _strength = 10;
             _speed = 10;

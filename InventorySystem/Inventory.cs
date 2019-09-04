@@ -121,10 +121,13 @@ namespace InventorySystem
                         Console.WriteLine("You can't eqiup the weapon.");
                         Console.WriteLine("");
                     }
-                    Console.WriteLine("You have equiped the Dagger!");
-                    Console.WriteLine("Damage: " + _itemDamage + "PP");
-                    Console.WriteLine("Weight: " + _itemWeight);
-                    Console.WriteLine("");
+                    else
+                    {
+                     Console.WriteLine("You have equiped the Dagger!");
+                     Console.WriteLine("Damage: " + _itemDamage + "PP");
+                     Console.WriteLine("Weight: " + _itemWeight);
+                     Console.WriteLine("");
+                    }
                     
                 }
                 else if (choice == "2")
@@ -138,10 +141,13 @@ namespace InventorySystem
                         Console.WriteLine("");
                         
                     }
+                    else
+                    {
                     Console.WriteLine("You have equiped the Sword!");
                     Console.WriteLine("Damage: " + _itemDamage + "PP");
                     Console.WriteLine("Weight: " + _itemWeight);
                     Console.WriteLine("");
+                    }
                     
                 }
                 else if (choice == "3")
@@ -155,11 +161,13 @@ namespace InventorySystem
                         Console.WriteLine("");
                         
                     }
-                    Console.WriteLine("You have equiped the Warhammer!");
-                    Console.WriteLine("Damage: " + _itemDamage + "PP");
-                    Console.WriteLine("Weight: " + _itemWeight);
-                    Console.WriteLine("");
-                    
+                    else
+                    {
+                     Console.WriteLine("You have equiped the Warhammer!");
+                     Console.WriteLine("Damage: " + _itemDamage + "PP");
+                     Console.WriteLine("Weight: " + _itemWeight);
+                     Console.WriteLine("");
+                    }
                 }
                 else if (choice == "4")
                 {
@@ -171,10 +179,13 @@ namespace InventorySystem
                         Console.WriteLine("You can't eqiup the weapon.");
                         Console.WriteLine("");
                     }
-                    Console.WriteLine("You have equiped the Master Sword!");
-                    Console.WriteLine("Damage: " + _itemDamage + "PP");
-                    Console.WriteLine("Weight: " + _itemWeight);
-                    Console.WriteLine("");
+                    else
+                    {
+                     Console.WriteLine("You have equiped the Master Sword!");
+                     Console.WriteLine("Damage: " + _itemDamage + "PP");
+                     Console.WriteLine("Weight: " + _itemWeight);
+                     Console.WriteLine("");
+                    }
                 }
             }
            
