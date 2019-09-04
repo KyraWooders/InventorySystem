@@ -11,11 +11,13 @@ namespace InventorySystem
     {
         private int _currentLocation = 0;
         private Scene[] _sceneList;
+        private Creature[] _players;
 
-        public Map(int startingSceneID, Scene[] scenes)
+        public Map(int startingSceneID, Scene[] scenes, Creature[] players)
         {
             _currentLocation = startingSceneID;
             _sceneList = scenes;
+            _players = players;
         }
 
         public void PrintCurrentScene()
@@ -57,6 +59,7 @@ namespace InventorySystem
 
         public void Menu()
         {
+
             string choice = "";
             while (choice != "0")
             {
@@ -106,16 +109,30 @@ namespace InventorySystem
             {
                 Console.WriteLine("There is nowhere");
             }
-            
-            
         }
         public void Search()
         {
             if (_currentLocation >= 0 && _currentLocation < _sceneList.Length)
             {
+                CheckForMonster();
                 Console.WriteLine(_sceneList[_currentLocation].GetHidden());
             }
+            
+            
         }
+        public void CheckForMonster()
+        {
+            if (_currentLocation >= 0 && _currentLocation < _sceneList.Length)
+            {
+                Scene currentScene = _sceneList[_currentLocation];
+                if (currentScene.GetCleared() == false)
+                {
+                    Encounter encounter = new Encounter(_players, currentScene.GetEnemies());
+                    encounter.Start();
+                }
+            }
+        }
+        
         public void Save(string path)
         {
             //create a writer for the file at our path

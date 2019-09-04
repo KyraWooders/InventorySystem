@@ -13,35 +13,16 @@ namespace InventorySystem
         static void Main(string[] args)
         {
 
-            //Scene courtyard = new Scene("Courtyard", 1, 3, -1, 2, "You're in the courtyard. There's a Graveyard to the North, the Castle Gate in the South, and a village in the West.");
-            //Scene graveyard = new Scene("Graveyard", -1, 0, -1, -1, "You're in the spooky Graveyard. There's a Courtyard to the North.");
-            //Scene village = new Scene("Village", -1, -1, 0, -1, "You're in a nice small village. There's a Courtyard to the East.");
-            //Scene castlegate = new Scene("Castlegate", 0, -1, -1, -1, "You're at the Castle Gate. The evil queen lives in there. There's a Courtyard to the North.");
-
-
-            //Scene[] scenes = { courtyard, graveyard, village, castlegate };
-            //Map map = new Map(0, scenes);
-            
-            //map.Menu();
-
-            //Console.ReadKey();
- 
-
-
-
-
-            
             //create a bunch of monsters
             Creature Orge = new Monster("Sherk", 100, 20);
             Creature Donkey = new Monster("Donkey!!!", 100, 20);
             Creature Porge = new Monster("Fiona", 100, 30);
             Creature PC = new Monster("Prince Charming", 100, 2);
-            Character player = new Character("OwO");
-            //create two arrays and place the monsters into them
-            Creature[] goodTeam = { player, Orge, Porge };
-            Creature[] badTeam = { Donkey, PC };
+
             
             string name = "";
+            Console.WriteLine("Enter name of party member 1:");
+            name = Console.ReadLine();
             string choice = "";
             while (choice != "1" && choice != "2")
             {
@@ -53,7 +34,7 @@ namespace InventorySystem
                 Console.WriteLine("3: Mage");
                 choice = Console.ReadLine();
             }
-            Character play;
+            Character player;
             if (choice == "1")
             {
                 player = new Knight(name);
@@ -70,6 +51,30 @@ namespace InventorySystem
             {
                 player = new Character(name);
             }
+            //create two arrays and place the monsters into them
+            Creature[] goodTeam = { player, Orge, Porge };
+            Creature[] badTeam = { Donkey, PC };
+            Creature[] empty = { };
+
+            Scene courtyard = new Scene("Courtyard", 1, 3, -1, 2, empty, "You're in the courtyard. There's a Graveyard to the North, the Castle Gate in the South, and a village in the West.");
+            Scene graveyard = new Scene("Graveyard", -1, 0, -1, -1, badTeam, "You're in the spooky Graveyard. There's a Courtyard to the North.");
+            Scene village = new Scene("Village", -1, -1, 0, -1, empty, "You're in a nice small village. There's a Courtyard to the East.");
+            Scene castlegate = new Scene("Castlegate", 0, -1, -1, -1, empty, "You're at the Castle Gate. The evil queen lives in there. There's a Courtyard to the North.");
+
+
+            Scene[] scenes = { courtyard, graveyard, village, castlegate };
+            Map map = new Map(0, scenes, goodTeam);
+
+            map.Menu();
+
+            Console.ReadKey();
+
+
+
+
+
+
+            
             //create an encounter from the two arrays of monsters
             Encounter encounter = new Encounter(goodTeam, badTeam);
             encounter.Print();
