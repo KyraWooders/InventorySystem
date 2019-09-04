@@ -39,6 +39,7 @@ namespace InventorySystem
             {
                 return;
             }
+            
             //get the damage of this
             int damage = GetDamage();
             //subtract the damage from target health
@@ -52,35 +53,40 @@ namespace InventorySystem
             {
                 return;
             }
-            
-            bool vaildInput = false;
-            while (!vaildInput)
-            {
-                Console.WriteLine("\nWho Will " + GetName() + " fight?");
-                //Iterate throught
-                for (int i = 0; i < targets.Length; i++)
-                {
-                    //print the current number (i) and current target
-                    string targetName = targets[i].GetName();
-                    Console.WriteLine(i + ":" + targetName);
-                }
-                //readline to get user input
-                string input = Console.ReadLine();
-                //convert the input to an integer
-                int choice = Convert.ToInt32(input);
-                //check that the choice is valid (above 0 and below the array lenght)
-                if (choice >= 0 && choice < targets.Length)
-                {
-                    ////set validInput to true
-                    vaildInput = true;
-                    //fight the chosen target
-                    Fight(targets[choice]);
+            Random random = new Random();
+            int choice = random.Next(0, targets.Length - 1);
+            Fight(targets[choice]);
+
+
+
+            //bool vaildInput = false;
+            //while (!vaildInput)
+            //{
+            //    Console.WriteLine("\nWho Will " + GetName() + " fight?");
+            //    //Iterate throught
+            //    for (int i = 0; i < targets.Length; i++)
+            //    {
+            //        //print the current number (i) and current target
+            //        string targetName = targets[i].GetName();
+            //        Console.WriteLine(i + ":" + targetName);
+            //    }
+            //    //readline to get user input
+            //    string input = Console.ReadLine();
+            //    //convert the input to an integer
+            //    int choice = Convert.ToInt32(input);
+            //    //check that the choice is valid (above 0 and below the array lenght)
+            //    if (choice >= 0 && choice < targets.Length)
+            //    {
+            //        ////set validInput to true
+            //        vaildInput = true;
+            //        //fight the chosen target
+            //        Fight(targets[choice]);
                     
 
-                }
+            //    }
                
                 
-            }
+            //}
 
         }
     }

@@ -10,6 +10,24 @@ namespace InventorySystem
     {
         static void Main(string[] args)
         {
+
+            //Scene courtyard = new Scene("Courtyard", 1, 3, -1, 2, "You're in the courtyard. There's a Graveyard to the North, the Castle Gate in the South, and a village in the West.");
+            //Scene graveyard = new Scene("Graveyard", -1, 0, -1, -1, "You're in the spooky Graveyard. There's a Courtyard to the North.");
+            //Scene village = new Scene("Village", -1, -1, 0, -1, "You're in a nice small village. There's a Courtyard to the East.");
+            //Scene castlegate = new Scene("Castlegate", 0, -1, -1, -1, "You're at the Castle Gate. The evil queen lives in there. There's a Courtyard to the North.");
+
+
+            //Scene[] scenes = { courtyard, graveyard, village, castlegate };
+            //Map map = new Map(0, scenes);
+            
+            //map.Menu();
+
+            //Console.ReadKey();
+ 
+
+
+
+
             
             //create a bunch of monsters
             Creature Orge = new Monster("Sherk", 100, 20);
@@ -23,14 +41,18 @@ namespace InventorySystem
             //create an encounter from the two arrays of monsters
             Encounter encounter = new Encounter(goodTeam, badTeam);
             encounter.Print();
+
+            Inventory inventory = new Inventory();
+
+            inventory.Menu();
             encounter.Start();
-            
-
-
             Console.ReadKey();
+
+
+
             return;
-            //Inventory inventory = new Inventory();
-            // inventory.Menu();
+            
+            
             string name = "";
             string choice = "";
             Console.WriteLine("Enter name of party member 1:");

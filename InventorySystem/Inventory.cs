@@ -16,7 +16,7 @@ namespace InventorySystem
         private int _weight = 0;
         private int _maxWeight = 100;
         private int _armorWeight = 0;
-        //do 
+        //do array
         private AttackItem sword = new AttackItem("MasterSword", 100, 1200);
         private AttackItem dagger = new AttackItem("Dagger", 10, 5);
         private AttackItem sword2 = new AttackItem("Sword", 20, 10);
