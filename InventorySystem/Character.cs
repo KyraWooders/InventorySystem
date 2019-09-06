@@ -40,6 +40,7 @@ namespace InventorySystem
         {
             return _damage;
         }
+        //heal the character(s)
         public override int Heal()
         {
             Console.WriteLine("You and you're party have healed.");

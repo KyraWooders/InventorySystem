@@ -144,8 +144,17 @@ namespace InventorySystem
             StreamWriter writer = File.CreateText(path);
             //write to it the same way we write to the console
             writer.WriteLine(CurrentSceneID);
+            writer.WriteLine(_players.Length);
+            foreach (Character c in _players)
+            {
+                if (c is Character)
+                {
+                    ((Character)c).Save(writer);
+                }
+            }
             //close write
             writer.Close();
+            Console.WriteLine("Game Saved.");
         }
         public void Load(string path)
         {
@@ -155,6 +164,31 @@ namespace InventorySystem
                 StreamReader reader = File.OpenText(path);
                 //write to it the same way we read from the console 
                 CurrentSceneID = Convert.ToInt32(reader.ReadLine());
+                int partySize = Convert.ToInt32(reader.ReadLine());
+                Creature[] loadedCreatues = new Creature[partySize];
+                for (int i = 0; i < partySize; i++)
+                {
+                    Character loadedCharacter;
+                    string name = reader.ReadLine();
+                    string job = reader.ReadLine();
+                    if (job == "Knight")
+                    {
+                        loadedCharacter = new Knight(name);
+                    }
+                    else if (job == "Rouge")
+                    {
+                        loadedCharacter = new Rouge(name);
+                    }
+                    else if (job == "Mage")
+                    {
+                        loadedCharacter = new Mage(name);
+                    }
+                    else
+                    {
+                        loadedCharacter = new Character(name);
+                    }
+                    int level = Convert.ToInt32(reader.ReadLine());
+                }
                 //close read
                 reader.Close();
             }
@@ -164,6 +198,7 @@ namespace InventorySystem
             }
 
         }
+        //heal the party 
         public void Heal()
         {
             foreach (Creature c in _players)

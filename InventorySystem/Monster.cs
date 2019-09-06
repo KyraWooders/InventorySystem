@@ -32,6 +32,7 @@ namespace InventorySystem
         {
             return _xp;
         }
+        //heal the monster(s)
         public override int Heal()
         {
             
