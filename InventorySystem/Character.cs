@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace InventorySystem
 {
@@ -135,6 +136,15 @@ namespace InventorySystem
 
             }
 
+        }
+        public override void Save(string player)
+        {
+            //create a writer for the file at our path
+            StreamWriter writer = File.CreateText(player);
+            //write to it the same way we write to the console
+            writer.WriteLine();
+            //close write
+            writer.Close();
         }
     }
 }

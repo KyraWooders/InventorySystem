@@ -54,5 +54,9 @@ namespace InventorySystem
         {
             return 0;
         }
+        public virtual void Save(string player)
+        {
+            
+        }
     }
 }

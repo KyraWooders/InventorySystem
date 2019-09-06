@@ -14,10 +14,14 @@ namespace InventorySystem
         {
 
             //create a bunch of monsters
-            Creature Orge = new Monster("Sherk", 100, 20);
-            Creature Donkey = new Monster("Donkey!!!", 100, 20);
-            Creature Porge = new Monster("Fiona", 100, 30);
-            Creature PC = new Monster("Prince Charming", 100, 2);
+            Creature Orge = new Monster("Sherk", 100, 20, 20);
+            Creature Donkey = new Monster("Donkey!!!", 100, 20, 30);
+            Creature Porge = new Monster("Fiona", 100, 30, 10);
+            Creature PC = new Monster("Prince Charming", 100, 2, 30);
+            Creature Gin = new Monster("Gingy", 100, 5, 60);
+            Creature Puss = new Monster("Puss in Boots", 100, 70, 40);
+            Creature Fairy = new Monster("Fairy Godmother", 100, 90, 100);
+            Creature Pin = new Monster("Pinocchio", 100, 30, 20);
 
             
             string name = "";
@@ -54,12 +58,14 @@ namespace InventorySystem
             //create two arrays and place the monsters into them
             Creature[] goodTeam = { player, Orge, Porge };
             Creature[] badTeam = { Donkey, PC };
+            Creature[] babeTeam = { Gin, Puss };
+            Creature[] queenTeam = { Fairy, Pin };
             Creature[] empty = { };
 
             Scene courtyard = new Scene("Courtyard", 1, 3, -1, 2, empty, "You're in the courtyard. There's a Graveyard to the North, the Castle Gate in the South, and a village in the West.");
-            Scene graveyard = new Scene("Graveyard", -1, 0, -1, -1, badTeam, "You're in the spooky Graveyard. There's a Courtyard to the North.");
-            Scene village = new Scene("Village", -1, -1, 0, -1, empty, "You're in a nice small village. There's a Courtyard to the East.");
-            Scene castlegate = new Scene("Castlegate", 0, -1, -1, -1, empty, "You're at the Castle Gate. The evil queen lives in there. There's a Courtyard to the North.");
+            Scene graveyard = new Scene("Graveyard", -1, 0, -1, -1, badTeam, "You're in the spooky Graveyard. There's a Courtyard to the South.");
+            Scene village = new Scene("Village", -1, -1, 0, -1, babeTeam, "You're in a nice small village. There's a Courtyard to the East.");
+            Scene castlegate = new Scene("Castlegate", 0, -1, -1, -1, queenTeam, "You're at the Castle Gate. The evil queen lives in there. There's a Courtyard to the North.");
 
 
             Scene[] scenes = { courtyard, graveyard, village, castlegate };

@@ -10,13 +10,15 @@ namespace InventorySystem
     {
         private string _name = "";
         private int _damage = 10;
+        private int _xp = 10;
 
-        public Monster(string name, int health, int damage)
+        public Monster(string name, int health, int damage, int xp)
         {
             _name = name;
             _health = health;
             _maxHealth = health;
             _damage = damage;
+            _xp = xp;
         }
         public override string GetName()
         {
@@ -26,7 +28,10 @@ namespace InventorySystem
         {
             return _damage;
         }
-        
+        public override int GetXP()
+        {
+            return _xp;
+        }
         public override void Print()
         {
             Console.WriteLine("\n" + _name);
@@ -90,5 +95,6 @@ namespace InventorySystem
             //}
 
         }
+        
     }
 }

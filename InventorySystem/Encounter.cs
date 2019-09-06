@@ -112,6 +112,7 @@ namespace InventorySystem
                             {
                                 Character ch = (Character)cr;
                                ch.Experience += GetTotalXP(_badMonsters);
+                                Console.WriteLine();
                             }
                             
                         }

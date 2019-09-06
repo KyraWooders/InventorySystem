@@ -71,7 +71,8 @@ namespace InventorySystem
                 Console.WriteLine("1: Travel");
                 Console.WriteLine("2: Search");
                 Console.WriteLine("3: Save");
-                Console.WriteLine("4: Load");
+                Console.WriteLine("4: Save Character");
+                Console.WriteLine("5: Load");
                 //get the player choice
                 choice = Console.ReadLine();
                 if (choice == "1")
@@ -88,7 +89,11 @@ namespace InventorySystem
                 }
                 else if (choice == "4")
                 {
-                    Load("load.txt");
+                    Load("save.txt");
+                }
+                else if (choice == "5")
+                {
+                    Heal();
                 }
             }
         }
@@ -158,6 +163,10 @@ namespace InventorySystem
                 Console.WriteLine("save file can't be found");
             }
 
+        }
+        public void Heal()
+        {
+            
         }
     }
 }
