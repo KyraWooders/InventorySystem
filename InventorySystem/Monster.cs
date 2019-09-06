@@ -32,6 +32,12 @@ namespace InventorySystem
         {
             return _xp;
         }
+        public override int Heal()
+        {
+            
+            _health = _maxHealth;
+            return _health;
+        }
         public override void Print()
         {
             Console.WriteLine("\n" + _name);

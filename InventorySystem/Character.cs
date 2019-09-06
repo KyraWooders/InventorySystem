@@ -40,7 +40,13 @@ namespace InventorySystem
         {
             return _damage;
         }
-        
+        public override int Heal()
+        {
+            Console.WriteLine("You and you're party have healed.");
+            _health = _maxHealth;
+            return _health;
+        }
+
         public override void Print()
         {
             Console.WriteLine(_name);

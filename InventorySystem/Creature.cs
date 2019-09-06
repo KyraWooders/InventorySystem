@@ -30,6 +30,10 @@ namespace InventorySystem
                 }
             }
         }
+        public virtual int Heal()
+        {
+            return 0;
+        }
         public virtual void Fight(Creature target)
         {
 

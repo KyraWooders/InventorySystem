@@ -12,7 +12,7 @@ namespace InventorySystem
         private int _currentLocation = 0;
         private Scene[] _sceneList;
         private Creature[] _players;
-
+        private int _maxHealth = 0;
         public Map(int startingSceneID, Scene[] scenes, Creature[] players)
         {
             _currentLocation = startingSceneID;
@@ -71,8 +71,8 @@ namespace InventorySystem
                 Console.WriteLine("1: Travel");
                 Console.WriteLine("2: Search");
                 Console.WriteLine("3: Save");
-                Console.WriteLine("4: Save Character");
-                Console.WriteLine("5: Load");
+                Console.WriteLine("4: Load");
+                Console.WriteLine("5: Heal");
                 //get the player choice
                 choice = Console.ReadLine();
                 if (choice == "1")
@@ -166,7 +166,10 @@ namespace InventorySystem
         }
         public void Heal()
         {
-            
+            foreach (Creature c in _players)
+            {
+                c.Heal();
+            }
         }
     }
 }
