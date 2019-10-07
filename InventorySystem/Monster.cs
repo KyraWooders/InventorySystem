@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace InventorySystem
 {
@@ -11,7 +12,7 @@ namespace InventorySystem
         private string _name = "";
         private int _damage = 10;
         private int _xp = 10;
-
+        private int _level = 1;
         public Monster(string name, int health, int damage, int xp)
         {
             _name = name;
@@ -94,14 +95,27 @@ namespace InventorySystem
             //        vaildInput = true;
             //        //fight the chosen target
             //        Fight(targets[choice]);
-                    
+
 
             //    }
-               
-                
+
+
             //}
 
         }
+
         
+
+        public override void Save(StreamWriter writer)
+        {
+            writer.WriteLine(GetName());
+            writer.WriteLine(GetXP());
+            writer.WriteLine(GetLevel());
+        }
+        public override int GetLevel()
+        {
+            return _level;
+        }
+
     }
 }

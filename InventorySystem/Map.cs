@@ -12,7 +12,7 @@ namespace InventorySystem
         private int _currentLocation = 0;
         private Scene[] _sceneList;
         private Creature[] _players;
-        private int _maxHealth = 0;
+        
         public Map(int startingSceneID, Scene[] scenes, Creature[] players)
         {
             _currentLocation = startingSceneID;
@@ -165,7 +165,7 @@ namespace InventorySystem
                 //write to it the same way we read from the console 
                 CurrentSceneID = Convert.ToInt32(reader.ReadLine());
                 int partySize = Convert.ToInt32(reader.ReadLine());
-                Creature[] loadedCreatues = new Creature[partySize];
+                Creature[] loadedCreatures = new Creature[partySize];
                 for (int i = 0; i < partySize; i++)
                 {
                     Character loadedCharacter;
@@ -188,6 +188,10 @@ namespace InventorySystem
                         loadedCharacter = new Character(name);
                     }
                     int level = Convert.ToInt32(reader.ReadLine());
+                    int xp = Convert.ToInt32(reader.ReadLine());
+                    loadedCharacter.Load(level, xp);
+                    loadedCreatures[i] = loadedCharacter;
+                    loadedCharacter.Print();
                 }
                 //close read
                 reader.Close();

@@ -12,9 +12,41 @@ namespace InventorySystem
 
         static void Main(string[] args)
         {
-
-            //create a bunch of monsters
             Creature Orge = new Monster("Sherk", 100, 20, 20);
+            Console.WriteLine("Health: " + Orge.Health);
+
+            Spellbook spellbook = new Spellbook(2);
+
+            spellbook.Page1(Orge);
+            Console.WriteLine("Health: " + Orge.Health);
+            spellbook.Page2(Orge);
+            Console.WriteLine("Health: " + Orge.Health);
+            //create a method and assign it to Page1
+            void Flame(Creature target)
+            {
+                target.Health -= 25;
+            }
+            void Heal(Creature target)
+            {
+                target.Health += 25;
+            }
+            spellbook.Page1 = Flame;
+            spellbook.Page2 = Heal;
+            spellbook.Page1(Orge);
+            Console.WriteLine("Health: " + Orge.Health);
+            spellbook.Page2(Orge);
+            Console.WriteLine("Health: " + Orge.Health);
+
+            spellbook.book[0] = Flame;
+            spellbook.book[1] = Heal;
+            spellbook.book[0](Orge);
+            Console.WriteLine("Health: " + Orge.Health);
+
+
+            Console.ReadKey();
+            return;
+            //create a bunch of monsters
+            Creature rge = new Monster("Sherk", 100, 20, 20);
             Creature Donkey = new Monster("Donkey!!!", 100, 20, 30);
             Creature Porge = new Monster("Fiona", 100, 30, 10);
             Creature PC = new Monster("Prince Charming", 100, 2, 30);

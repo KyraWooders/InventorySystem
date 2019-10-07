@@ -144,14 +144,42 @@ namespace InventorySystem
             }
 
         }
-        public override void Save(string player)
+        
+        public void Load(StreamReader reader)
         {
-            //create a writer for the file at our path
-            StreamWriter writer = File.CreateText(player);
-            //write to it the same way we write to the console
-            writer.WriteLine();
-            //close write
-            writer.Close();
+
+        }
+
+        public override void Save(StreamWriter writer)
+        {
+            writer.WriteLine(GetName());
+            if (this is Knight)
+            {
+                writer.WriteLine("Knight");
+            }
+            if (this is Rouge)
+            {
+                writer.WriteLine("Rouge");
+            }
+            if (this is Mage)
+            {
+                writer.WriteLine("Mage");
+            }
+            else
+            {
+                writer.WriteLine("Jobless");
+            }
+            writer.WriteLine(GetXP());
+            writer.WriteLine(GetLevel());
+        }
+        public override int GetLevel()
+        {
+            return _level;
+        }
+
+        internal void Load(int level, int xp)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace InventorySystem
 {
@@ -58,9 +59,16 @@ namespace InventorySystem
         {
             return 0;
         }
-        public virtual void Save(string player)
+        
+        
+
+        public virtual void Save(StreamWriter writer)
         {
             
+        }
+        public virtual int GetLevel()
+        {
+            return 0;
         }
     }
 }
